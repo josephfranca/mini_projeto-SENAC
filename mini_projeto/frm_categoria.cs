@@ -107,9 +107,11 @@ namespace mini_projeto
             cbo_status.SelectedIndex = -1;
         }
 
+
+        //Botão excluir ta funcionando
         private void bto_excluir_Click(object sender, EventArgs e)
         {
-            string sql = "delete from categoria where id_categoria " + txt_cod;
+            string sql = "delete from categoria where id_categoria = " + txt_cod.Text;
 
 
             SqlConnection conn = new SqlConnection(stringconexao);
@@ -127,7 +129,7 @@ namespace mini_projeto
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro " +ex.ToString());
+                MessageBox.Show("Erro " +ex.Message);
             }
             finally
             {
@@ -159,6 +161,7 @@ namespace mini_projeto
                     txt_nome_cat.Text = reader[1].ToString();
                     txt_desc.Text = reader[2].ToString();
                     txt_obs.Text = reader[3].ToString();
+                    cbo_status.Text = reader[4].ToString().Trim();
                 }
                 else
                 {
@@ -174,6 +177,48 @@ namespace mini_projeto
                 conn.Close();
             }
              //Botão pesquisar está funcionando.
+        }
+
+        private void bto_alterar_Click(object sender, EventArgs e)
+        {
+
+            //problema drop down list resolver 
+            string sql = "update categoria set " +
+               "nome_categoria= '" + txt_nome_cat.Text + "'," +
+               "descricao_categoria= '" + txt_desc.Text + "'," +
+               "obs_categoria= '" + txt_obs.Text + "'," +
+                 "status_categoria = '" + cbo_status.Text + "' " +
+               //  "status_categoria= ' " + cbo_status.Text + "'" +
+               //"status_categoria= '" + cbo_status.SelectedIndex + "'" +
+               "where id_categoria=" + txt_cod.Text;
+
+            SqlConnection conn = new SqlConnection(stringconexao);
+            SqlCommand cmd = new SqlCommand (sql,conn);
+            cmd.CommandType = CommandType.Text;
+
+            try
+            {
+                conn.Open();
+
+                int i = cmd.ExecuteNonQuery();
+                if (i == 1)
+                {
+                    MessageBox.Show("Dados alterados com sucesso!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void cbo_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

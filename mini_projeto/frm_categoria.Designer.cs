@@ -108,12 +108,13 @@
             // 
             // bto_alterar
             // 
-            this.bto_alterar.Location = new System.Drawing.Point(163, 481);
+            this.bto_alterar.Location = new System.Drawing.Point(189, 481);
             this.bto_alterar.Name = "bto_alterar";
             this.bto_alterar.Size = new System.Drawing.Size(75, 23);
             this.bto_alterar.TabIndex = 7;
             this.bto_alterar.Text = "Alterar";
             this.bto_alterar.UseVisualStyleBackColor = true;
+            this.bto_alterar.Click += new System.EventHandler(this.bto_alterar_Click);
             // 
             // bto_limpar
             // 
@@ -165,6 +166,7 @@
             this.cbo_status.Name = "cbo_status";
             this.cbo_status.Size = new System.Drawing.Size(121, 23);
             this.cbo_status.TabIndex = 12;
+            this.cbo_status.SelectedIndexChanged += new System.EventHandler(this.cbo_status_SelectedIndexChanged);
             // 
             // lbl_cod
             // 

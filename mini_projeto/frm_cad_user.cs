@@ -16,7 +16,7 @@ namespace mini_projeto
             "initial catalog = n8_miniprojeto;" +
             "User ID= sa;" +
             "Password =123456";
-            //em initial catalog é sempre o nome do banco, lembre-se disso.
+        //em initial catalog é sempre o nome do banco, lembre-se disso.
 
         public frm_cad_user()
         {
@@ -25,23 +25,24 @@ namespace mini_projeto
 
         private void frm_cad_user_Load(object sender, EventArgs e)
         {
-         testeconexao();
+            testeconexao();
+            carregar_grid_usuario();
         }
 
         private void testeconexao()
         {
             SqlConnection conn = new SqlConnection(stringconexao); //não esta funcionando, provavelmente(certeza 80%) porque esse private void está sem referência.(o problema era que eu não estava com  a biblioteca atualizada)
-            
-            try 
+
+            try
             {
-              conn.Open();
-              conn.Close();
+                conn.Open();
+                conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro: " + ex.ToString());
                 Application.Exit();
-               
+
             }
         }
 
@@ -50,7 +51,7 @@ namespace mini_projeto
 
             //validações para caso tabelas importantes não seja preenchidadas
             //validação login
-            if (txt_login.Text.Trim() == "" )
+            if (txt_login.Text.Trim() == "")
             {
                 MessageBox.Show("Erro, preencha o campo login");
                 txt_login.Text = "";
@@ -59,15 +60,15 @@ namespace mini_projeto
 
             }
             //validação nome
-            if (txt_nome.Text.Trim()== "")
+            if (txt_nome.Text.Trim() == "")
             {
                 MessageBox.Show("Erro, preencha o campo Nome");
                 txt_nome.Text = "";
                 Focus();
-                return ;
+                return;
             }
             //validação senha
-            if (txt_senha.Text.Trim()== "")
+            if (txt_senha.Text.Trim() == "")
             {
                 MessageBox.Show("Erro, preencha o campo senha");
                 txt_senha.Text = "";
@@ -75,7 +76,7 @@ namespace mini_projeto
                 return;
             }
             //validação CPF
-            if (mtxt_cpf.Text.Trim()== "")
+            if (mtxt_cpf.Text.Trim() == "")
             {
                 MessageBox.Show("Erro, preencha o campo CPF");
                 mtxt_cpf.Text = "";
@@ -83,7 +84,7 @@ namespace mini_projeto
                 return;
             }
             //validação status
-            if (cbo_status.SelectedIndex == -1 )
+            if (cbo_status.SelectedIndex == -1)
             {
                 MessageBox.Show("Erro, escolha uma alternativa");
                 cbo_status.SelectedIndex = -1;
@@ -93,7 +94,7 @@ namespace mini_projeto
 
 
             string sql = "insert into usuario " + "(" +
-              
+
               "nome_usuario, " +
             "login_usuario, " +
             "senha_usuario, " +
@@ -105,7 +106,7 @@ namespace mini_projeto
             "'" + txt_login.Text + "'," +
             "'" + txt_senha.Text + "'," +
             "'" + mtxt_cpf.Text + "'," +
-            "'" + txt_obs .Text+ "'," +
+            "'" + txt_obs.Text + "'," +
             "'" + cbo_status.Text + "'" + ")";
 
             SqlConnection conn = new SqlConnection(stringconexao);
@@ -131,20 +132,20 @@ namespace mini_projeto
                 MessageBox.Show("Erro: " + ex.Message);
                 //caso algo de errado essa mensagem aparece
             }
-                finally 
+            finally
             {
-            conn.Close();
-            }                                     
+                conn.Close();
+            }
         }
-                //Sistema para excluir dados da tabela, está funcionando como deveria.
+        //Sistema para excluir dados da tabela, está funcionando como deveria.
         private void bto_excluir_Click(object sender, EventArgs e)
         {
             string sql = "delete from usuario where id_usuario = " + txt_cod.Text;
             //para excluir um usuário especifico basta colococar o id
 
-           SqlConnection conexao = new SqlConnection(stringconexao);
-                SqlCommand cmd = new SqlCommand(sql, conexao);
-                  cmd.CommandType = CommandType.Text;
+            SqlConnection conexao = new SqlConnection(stringconexao);
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.CommandType = CommandType.Text;
 
 
             try
@@ -221,7 +222,7 @@ namespace mini_projeto
                 "login_usuario, " +
                 "senha_usuario, " +
                 "cpf_usuario," +
-                "obs_usuario, " +            
+                "obs_usuario, " +
                 "status_usuario" +
                   ") values (" +
                     "'" + txt_nome.Text + "'," +                    //aspas simples no meio de aspas duplas +
@@ -233,9 +234,9 @@ namespace mini_projeto
             ") select scope_identity()";
 
             SqlConnection conn = new SqlConnection(stringconexao);
-            SqlCommand cmd = new SqlCommand(sql,conn);
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
-            SqlDataReader leitura;    
+            SqlDataReader leitura;
             conn.Open();
 
             try
@@ -253,7 +254,7 @@ namespace mini_projeto
 
                 }
             }
-               catch (Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro " + ex.Message);
             }
@@ -280,7 +281,7 @@ namespace mini_projeto
             txt_obs.Text = "";
         }
 
-        
+
         //botão pesquisar ta funcionando.
         private void bto_pesquisar_Click(object sender, EventArgs e)
         {
@@ -378,7 +379,7 @@ namespace mini_projeto
             // A tabela cpf está dando erro de valor truncado, que significa que o valor está acima ou abaixo visto que no sql ta char e não varchar.
             // a solução desse problema foi remover os espaços das aspas, eles são caracteres que estavam ocupando espaços que não deveriam
             SqlConnection conn = new SqlConnection(stringconexao);
-            SqlCommand cmd = new SqlCommand(sql,conn);
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             conn.Open();
 
@@ -393,7 +394,7 @@ namespace mini_projeto
             catch (Exception ex)
             {
                 MessageBox.Show("Erro " + ex.Message);
-              
+
             }
 
             finally
@@ -406,6 +407,63 @@ namespace mini_projeto
         private void bto_sair_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void gbo_campos_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void carregar_grid_usuario()
+        {
+            string sql = "select " +
+            "id_usuario as 'id'," +
+            "nome_usuario as 'nome', " +
+            "login_usuario as 'login', " +
+            "cpf_usuario as 'cpf', " +
+            "status_usuario as 'status'" +
+            "from usuario where nome_usuario like '%" + txt_pesquisa.Text + "%'";
+
+
+            SqlConnection conn = new SqlConnection(stringconexao);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+            DataSet ds = new DataSet();
+            conn.Open();
+
+            try
+            {
+                adapter.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dataGridView1.AutoResizeRow(0, DataGridViewAutoSizeRowMode.AllCellsExceptHeader);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro " + ex.Message);
+
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           carregar_grid_usuario();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txt_cod.Text = dataGridView1.CurrentRow.Cells["id"].Value.ToString();
+            bto_pesquisar.PerformClick();
+        }
+
+        private void cbo_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

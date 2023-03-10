@@ -53,9 +53,14 @@
             this.bto_alterar = new System.Windows.Forms.Button();
             this.bto_cadastrar = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txt_pesquisa = new System.Windows.Forms.TextBox();
             this.gbo_cod_pesq.SuspendLayout();
             this.gbo_campos.SuspendLayout();
             this.gbo_botoes.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // gbo_cod_pesq
@@ -114,6 +119,7 @@
             this.gbo_campos.Size = new System.Drawing.Size(649, 319);
             this.gbo_campos.TabIndex = 1;
             this.gbo_campos.TabStop = false;
+            this.gbo_campos.Enter += new System.EventHandler(this.gbo_campos_Enter);
             // 
             // txt_obs
             // 
@@ -143,6 +149,7 @@
             this.cbo_status.Name = "cbo_status";
             this.cbo_status.Size = new System.Drawing.Size(121, 23);
             this.cbo_status.TabIndex = 9;
+            this.cbo_status.SelectedIndexChanged += new System.EventHandler(this.cbo_status_SelectedIndexChanged);
             // 
             // mtxt_cpf
             // 
@@ -292,11 +299,43 @@
             this.bto_cadastrar.UseVisualStyleBackColor = true;
             this.bto_cadastrar.Click += new System.EventHandler(this.bto_cadastrar_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.txt_pesquisa);
+            this.groupBox1.Location = new System.Drawing.Point(703, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(450, 525);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(26, 83);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(399, 364);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // txt_pesquisa
+            // 
+            this.txt_pesquisa.Location = new System.Drawing.Point(26, 29);
+            this.txt_pesquisa.Name = "txt_pesquisa";
+            this.txt_pesquisa.Size = new System.Drawing.Size(399, 23);
+            this.txt_pesquisa.TabIndex = 0;
+            this.txt_pesquisa.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // frm_cad_user
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 560);
+            this.ClientSize = new System.Drawing.Size(1151, 560);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbo_botoes);
             this.Controls.Add(this.gbo_campos);
             this.Controls.Add(this.gbo_cod_pesq);
@@ -308,6 +347,9 @@
             this.gbo_campos.ResumeLayout(false);
             this.gbo_campos.PerformLayout();
             this.gbo_botoes.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -339,5 +381,8 @@
         private Button bto_cadastrar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button bto_add2;
+        private GroupBox groupBox1;
+        private DataGridView dataGridView1;
+        private TextBox txt_pesquisa;
     }
 }

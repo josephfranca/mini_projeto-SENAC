@@ -24,4 +24,7 @@ C:\Users\jose.lsfranca\source\repos\mini_projeto\mini_projeto\bin\Debug\net6.0-w
 C:\Users\jose.lsfranca\source\repos\mini_projeto\mini_projeto\obj\Debug\net6.0-windows\mini_projeto.csproj.CopyComplete
 C:\Users\jose.lsfranca\source\repos\mini_projeto\mini_projeto\obj\Debug\net6.0-windows\mini_projeto.frm_categoria.resources
 C:\Users\jose.lsfranca\source\repos\mini_projeto\mini_projeto\obj\Debug\net6.0-windows\mini_projeto.frm_cat_prod.resources
-C:\Users\jose.lsfranca\source\repos\mini_projeto\mini_projeto\obj\Debug\net6.0-windows\mini_projeto.MDIParent1.resources
+C:\Users\jose.lsfranca\source\repos\mini_projeto\mini_projeto\obj\Debug\net6.0-windows\mini_projeto.frm_login.resources
+C:\Users\jose.lsfranca\source\repos\mini_projeto\mini_projeto\obj\Debug\net6.0-windows\mini_projeto.MDIprincipal.resources
+C:\Users\jose.lsfranca\source\repos\mini_projeto\mini_projeto\obj\Debug\net6.0-windows\mini_projeto.frm_prod.resources
+C:\Users\jose.lsfranca\source\repos\mini_projeto\mini_projeto\obj\Debug\net6.0-windows\mini_projeto.Properties.Resources.resources

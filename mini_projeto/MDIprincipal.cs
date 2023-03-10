@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace mini_projeto
 {
-    public partial class MDIParent1 : Form
+    public partial class MDIprincipal : Form
     {
         private int childFormNumber = 0;
 
-        public MDIParent1()
+        public MDIprincipal()
         {
             InitializeComponent();
         }
@@ -34,9 +34,9 @@ namespace mini_projeto
 
         private void cadastroParaProdutosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_cat_prod frm_Cat_Prod = new frm_cat_prod();
-            frm_Cat_Prod.MdiParent = this;
-            frm_Cat_Prod.Show();
+           frm_prod frm_Prod = new frm_prod();
+           frm_Prod.MdiParent = this;
+           frm_Prod.Show();
         }
 
         private void cadastroParaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,6 +47,11 @@ namespace mini_projeto
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MDIprincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
